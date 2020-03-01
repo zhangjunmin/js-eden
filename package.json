@@ -1,0 +1,25 @@
+{
+  "name": "js-eden",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon ./src/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhangjunmin/js-eden.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zhangjunmin/js-eden/issues"
+  },
+  "homepage": "https://github.com/zhangjunmin/js-eden#readme",
+  "devDependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.9.2"
+  }
+}
