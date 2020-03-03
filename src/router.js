@@ -4,6 +4,7 @@
 const express = require("express")
 const router = express.Router()
 const Article = require("../model/article")
+const User = require("../model/user")
 const mongoose = require("mongoose")
 const url = "mongodb://localhost"
 mongoose.connect(url,{
@@ -86,4 +87,38 @@ router.post("/article/delete/:id", async (req, res)=> {
     })
 })
 
+// 注册
+router.post("/logon", async (req, res)=> {
+    const {name, password} = req.body
+    const user = new User({
+        name
+        ,password
+    })
+    const result = await user.save()
+    res.json({
+        message: "注册成功",
+        data: result
+    })
+})
+
+// 登录(分3种情况，用户不存在，用户密码不正确，正确)
+router.post("/login", async (req, res)=> {
+    const {name, password} = req.body
+    const user = await User.findOne({name})
+    let message, data = null
+    if(user){
+        if(user.password === password){
+            message = "登录成功"
+            data = user
+        }else{
+            message = "密码不正确"
+        }
+    }else{
+        message = "用户不存在"
+    }
+    res.json({
+        message
+        , data
+    })
+})
 module.exports = router;
