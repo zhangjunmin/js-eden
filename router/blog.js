@@ -8,7 +8,7 @@ const User = require("../model/user")
 const util = require("../common/util")
 // 首页
 router.get("/", (req, res) => {
-    res.send("hello index")
+    res.render("index", { title: "reactjs" })
 })
 
 // 列表 查询条件为真（假表示已经被删除），按创建时间倒序，根据页码，获取文章
@@ -24,7 +24,7 @@ router.get("/list(/page/:pageNumber)?", async (req, res, next) => {
         .limit(pageCount)
         .sort("-createDate")
         .skip(skip))
-    if(err){
+    if (err) {
         return next(err)
     }
     res.json({
@@ -40,7 +40,7 @@ router.get("/article/:id", async (req, res, next) => {
     const [err, data] = await util.awaitWarper(Article.findOne({
         _id: id
     }))
-    if(err){
+    if (err) {
         return next(err)
     }
     res.json({
@@ -58,7 +58,7 @@ router.post("/article/add", async (req, res, next) => {
         , author //以后要根据登录查询
     })
     const [err, data] = await util.awaitWarper(article.save())
-    if(err){
+    if (err) {
         return next(err)
     }
     res.json({
@@ -76,7 +76,7 @@ router.post("/article/edit/:id", async (req, res, next) => {
         , content
         , updateDate: Date.now()
     }))
-    if(err){
+    if (err) {
         return next(err)
     }
     res.json({
@@ -89,7 +89,7 @@ router.post("/article/edit/:id", async (req, res, next) => {
 router.post("/article/delete/:id", async (req, res, next) => {
     const { id } = req.params
     const [err, data] = await util.awaitWarper(Article.deleteOne({ _id: id }))
-    if(err){
+    if (err) {
         return next(err)
     }
     res.json({
@@ -111,7 +111,7 @@ router.post("/logon", async (req, res, next) => {
     const [err, data] = await util.awaitWarper(user.save())
     if (err) {
         return next(err)
-    } 
+    }
     res.json({
         message: "注册成功",
         data
@@ -122,7 +122,7 @@ router.post("/logon", async (req, res, next) => {
 router.post("/login", async (req, res, next) => {
     const { name, password } = req.body
     const [err, data] = await util.awaitWarper(User.findOne({ name }))
-    if(err){
+    if (err) {
         return next(err)
     }
     let message
