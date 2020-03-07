@@ -1,0 +1,22 @@
+{
+  "name": "js-eden",
+  "description": "",
+  "main": "app.js",
+  "authors": [
+    "zjm"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/zhangjunmin/js-eden",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "/public/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "flat-ui": "^2.3.0",
+    "jquery-ui": "^1.12.1"
+  }
+}

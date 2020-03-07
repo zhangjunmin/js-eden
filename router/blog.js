@@ -8,7 +8,7 @@ const User = require("../model/user")
 const util = require("../common/util")
 // 首页
 router.get("/", (req, res) => {
-    res.render("index", { title: "reactjs" })
+    res.render("index", { title: "hi", content: "welcome"})
 })
 
 // 列表 查询条件为真（假表示已经被删除），按创建时间倒序，根据页码，获取文章

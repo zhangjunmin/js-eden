@@ -7,17 +7,22 @@ const express = require("express")
 const app = express()
 const router = require("../router/blog")
 const mongoose = require("mongoose")
-const reactViews = require('express-react-views');
 
 // 数据库连接
+// 设置连接参数解决MongoDB的nodejs驱动程序的弃用导致报警
+const opts = {
+    "dbName": "blog"
+    , "useNewUrlParser": true
+    , "useUnifiedTopology": true
+    , "useCreateIndex": true
+}
 const url = "mongodb://localhost"
-mongoose.connect(url, { dbName: "blog" })
+mongoose.connect(url, opts)
 
 // 模板引擎
 app.set("views", "./views")
-app.set("view engine", "jsx")
-app.engine("jsx", reactViews.createEngine())
-// app.use(express.static(path.join(__dirname, 'public')));
+app.set("view engine", "ejs")
+app.use(express.static("./public"));
 
 // parse application
 // parse form-urlencode

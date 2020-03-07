@@ -19,11 +19,9 @@
   },
   "homepage": "https://github.com/zhangjunmin/js-eden#readme",
   "devDependencies": {
+    "ejs": "^3.0.1",
     "express": "^4.17.1",
-    "express-react-views": "^0.11.0",
     "mongoose": "^5.9.2",
-    "nodemon": "^2.0.2",
-    "react": "^16.13.0",
-    "react-dom": "^16.13.0"
+    "nodemon": "^2.0.2"
   }
 }
